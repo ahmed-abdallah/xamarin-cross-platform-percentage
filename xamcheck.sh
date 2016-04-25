@@ -1,4 +1,4 @@
-wc -l $(egrep -Rl 'Foundation|UIKit|Android|IOS|Droid' --include \*.cs $1) > stuff
+wc -l $(egrep -Rl 'using Foundation|using UIKit|using Android|IOS|Droid' --include \*.cs $1) > platformstuff
 
 while read lines filename
 do
@@ -6,12 +6,12 @@ do
 		then 
 		let math=$((unshared = unshared + lines))
 	fi
-done < stuff
+done < platformstuff
 
 echo 'Unshared lines: '$unshared
 
 
-wc -l $(find $1 -name '*.cs') > stuff
+wc -l $(find $1 -name '*.cs') > allstuff
 
 while read lines filename
 do
@@ -19,7 +19,7 @@ do
 		then 
 		let math=$((total = total + lines))
 	fi
-done < stuff
+done < allstuff
 
 echo 'Total lines: '$total
 
