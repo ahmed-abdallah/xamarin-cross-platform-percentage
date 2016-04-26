@@ -15,7 +15,7 @@ wc -l $(find $1 -name '*.cs') > allstuff
 
 while read lines filename
 do
-	if [ "$filename" != 'total' ];
+	if [[ "$filename" != 'total' && "$filename" != *"Resource.Designer.cs" && "$filename" != *"AssemblyInfo.cs" ]];
 		then 
 		let math=$((total = total + lines))
 	fi
