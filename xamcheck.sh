@@ -2,7 +2,7 @@ wc -l $(egrep -Rl 'using Foundation|using UIKit|using Android|IOS|Droid' --inclu
 
 while read lines filename
 do
-	if [ "$filename" != 'total' ];
+	if [[ "$filename" != 'total' && "$filename" != *"Resource.Designer.cs" && "$filename" != *"AssemblyInfo.cs" ]];
 		then 
 		let math=$((unshared = unshared + lines))
 	fi
